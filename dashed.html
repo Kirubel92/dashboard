@@ -1,0 +1,177 @@
+<html><head><base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Analytics Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <link rel="stylesheet" href="style.css"> </head>
+</head>
+<body>
+    <div class="dashboard">
+        <aside class="sidebar">
+            <h2>Social Analytics</h2>
+            <nav>
+                <div class="nav-item active" data-section="dashboard">Dashboard</div>
+                <div class="nav-item" data-section="analytics">Analytics</div>
+                <div class="nav-item" data-section="scheduler">Post Scheduler</div>
+                <div class="nav-item" data-section="reports">Reports</div>
+                <div class="nav-item" data-section="settings">Settings</div>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div id="dashboard-section" class="content-section active">
+                <div class="platform-selector">
+                    <button class="platform-btn active">All Platforms</button>
+                    <button class="platform-btn">Facebook</button>
+                    <button class="platform-btn">Twitter</button>
+                    <button class="platform-btn">Instagram</button>
+                    <button class="platform-btn">LinkedIn</button>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Followers</h3>
+                        <p class="stat-number">245,678</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Engagement Rate</h3>
+                        <p class="stat-number">4.2%</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Posts</h3>
+                        <p class="stat-number">1,234</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Average Reach</h3>
+                        <p class="stat-number">15,432</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="engagementChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="growthChart"></canvas>
+                </div>
+            </div>
+
+            <div id="analytics-section" class="content-section">
+                <h2>Advanced Analytics</h2>
+                <div class="chart-container">
+                    <canvas id="detailedAnalyticsChart"></canvas>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Click-through Rate</h3>
+                        <p class="stat-number">2.8%</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Conversion Rate</h3>
+                        <p class="stat-number">1.5%</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Average Response Time</h3>
+                        <p class="stat-number">45 mins</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="scheduler-section" class="content-section">
+                <h2>Post Scheduler</h2>
+                <div class="scheduler-grid">
+                    <div class="scheduler-form">
+                        <h3>Schedule New Post</h3>
+                        <div class="form-group">
+                            <label>Platform</label>
+                            <select>
+                                <option>Facebook</option>
+                                <option>Twitter</option>
+                                <option>Instagram</option>
+                                <option>LinkedIn</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Content</label>
+                            <textarea rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Date & Time</label>
+                            <input type="datetime-local">
+                        </div>
+                        <button class="btn">Schedule Post</button>
+                    </div>
+                    <div class="post-card">
+                        <h3>Scheduled Posts</h3>
+                        <ul id="scheduled-posts"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reports-section" class="content-section">
+                <h2>Reports</h2>
+                <div class="report-card">
+                    <h3>Monthly Performance Report</h3>
+                    <p>Last generated: Today at 09:00 AM</p>
+                    <button class="btn">Download PDF</button>
+                </div>
+                <div class="report-card">
+                    <h3>Engagement Analysis</h3>
+                    <p>Last generated: Yesterday at 11:30 PM</p>
+                    <button class="btn">Download PDF</button>
+                </div>
+                <div class="report-card">
+                    <h3>Custom Report</h3>
+                    <div class="form-group">
+                        <label>Date Range</label>
+                        <input type="date"> to <input type="date">
+                    </div>
+                    <button class="btn">Generate Report</button>
+                </div>
+            </div>
+
+            <div id="settings-section" class="content-section">
+                <h2>Settings</h2>
+                <div class="settings-section">
+                    <h3>Account Settings</h3>
+                    <div class="form-group">
+                        <label>Email Notifications</label>
+                        <select>
+                            <option>All Activities</option>
+                            <option>Important Only</option>
+                            <option>None</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Time Zone</label>
+                        <select>
+                            <option>UTC-8 (PST)</option>
+                            <option>UTC-5 (EST)</option>
+                            <option>UTC+0 (GMT)</option>
+                        </select>
+                    </div>
+                    <button class="btn">Save Changes</button>
+                </div>
+                <div class="settings-section">
+                    <h3>Connected Accounts</h3>
+                    <div class="form-group">
+                        <label>Facebook</label>
+                        <button class="btn">Connected</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Twitter</label>
+                        <button class="btn">Connected</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Instagram</label>
+                        <button class="btn">Connect</button>
+                    </div>
+                    <div class="form-group">
+                        <label>LinkedIn</label>
+                        <button class="btn">Connected</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
